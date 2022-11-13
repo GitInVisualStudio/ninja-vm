@@ -1,5 +1,5 @@
 njvm
 refnjvm
 mknjvm
-/nj/
-/nj/**
+*.asm
+*.bin
