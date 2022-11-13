@@ -9,6 +9,7 @@
 
 int _allocations = 0;
 
+// defined in heap.h
 Heap heap = { 
     .data = NULL,
     .first_free = NULL,

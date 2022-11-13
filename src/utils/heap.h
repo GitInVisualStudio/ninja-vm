@@ -2,7 +2,6 @@
 #define HEAP_H
 
 #include <stdbool.h>
-#include <stddef.h>
 
 typedef struct Alloc {
     unsigned int size;
@@ -48,14 +47,13 @@ void* heap_alloc(unsigned int size);
  * @return struct Alloc* the new Alocs ptr
  */
 struct Alloc* heap_realloc(struct Alloc* alloc);
+bool heap_alloc_valid(struct Alloc* alloc);
+bool heap_ptr_valid(char* alloc);
 
 /**
  * intern functions
  */
-void __heap_append(struct Alloc* alloc);
 void __heap_collect();
-bool heap_alloc_valid(struct Alloc* alloc);
-bool heap_ptr_valid(char* alloc);
 extern bool __heap_full(unsigned int size);
 
 #endif

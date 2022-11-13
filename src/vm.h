@@ -62,7 +62,7 @@ typedef enum OPCODE {
 
 #define IS_PRIMITIVE(x) (x->type == PRIM)
 #define GET_PRIMITIVE(x) (x->types.ref)
-#define GET_OPCODE(op) (op >> 24)
+#define GET_OPCODE(op) (op >> 24 & 0xFF)
 
 typedef enum TYPE {
     INT = 0,
@@ -101,8 +101,7 @@ typedef struct Instruction {
     struct Instruction _var = {.process = process};\
     strcpy(_var.name, name);\
 
-#define LAST_OPCODE OPCODE_END
-#define MAX_INSTRUCTIONS LAST_OPCODE
+#define MAX_INSTRUCTIONS OPCODE_END
 extern Instruction instructions[MAX_INSTRUCTIONS];
 
 #define _INSTRUCTION_DECL(name) \
@@ -193,7 +192,5 @@ void __vm_realloc_obj(Object* obj);
  * @return int <=0 false, >0 true
  */
 int __big_cmp(ObjRef obj);
-
-void error(const char* msg);
 
 #endif
